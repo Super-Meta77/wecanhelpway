@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --ivory: #FAF7F2;
+  --paper: #F3EEE5;
+  --ink: #0F0F0E;
+  --ink-soft: #2B2A28;
+  --muted: #6B6862;
+  --line: #E6DFD3;
+  --terracotta: #E76F51;
+  --terracotta-deep: #C55A3E;
+  --sage: #3D5A55;
+  --sage-soft: #6B8A83;
+  --cream: #F0E7D6;
+}
+
+html, body { background: var(--ivory); color: var(--ink); }
+
+.font-serif { font-family: var(--font-serif), 'Instrument Serif', ui-serif, Georgia, serif; }
+.font-sans { font-family: var(--font-inter), Inter, ui-sans-serif, system-ui, sans-serif; }
+
+.editorial { font-family: var(--font-serif), 'Instrument Serif', ui-serif, Georgia, serif; letter-spacing: -0.02em; font-weight: 400; }
+.editorial-italic { font-family: var(--font-serif), 'Instrument Serif', ui-serif, Georgia, serif; font-style: italic; letter-spacing: -0.02em; }
+
+.grain::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: radial-gradient(rgba(15,15,14,0.06) 1px, transparent 1px);
+  background-size: 3px 3px;
+  opacity: 0.35;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+}
+
+.hairline { border-color: var(--line); }
+
+.btn-primary { background: var(--ink); color: var(--ivory); }
+.btn-primary:hover { background: #000; }
+.btn-accent { background: var(--terracotta); color: white; }
+.btn-accent:hover { background: var(--terracotta-deep); }
+.btn-ghost { color: var(--ink); }
+.btn-ghost:hover { background: rgba(15,15,14,0.05); }
+
+.chip { border: 1px solid var(--line); background: rgba(255,255,255,0.5); }
+.chip:hover { border-color: var(--ink); background: white; }
+
+/* Custom scrollbar for chat */
+.thin-scroll::-webkit-scrollbar { width: 6px; height: 6px; }
+.thin-scroll::-webkit-scrollbar-thumb { background: rgba(15,15,14,0.15); border-radius: 999px; }
+.thin-scroll::-webkit-scrollbar-track { background: transparent; }
+
+.masked-fade {
+  -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+}
+
+.dot-grid {
+  background-image: radial-gradient(rgba(15,15,14,0.08) 1px, transparent 1px);
+  background-size: 18px 18px;
+}
+
+@keyframes slow-pulse {
+  0%, 100% { opacity: 0.35; transform: scale(1); }
+  50% { opacity: 0.85; transform: scale(1.15); }
+}
+.slow-pulse { animation: slow-pulse 3.4s ease-in-out infinite; }
+
+@keyframes draw {
+  from { stroke-dashoffset: 400; }
+  to { stroke-dashoffset: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}
